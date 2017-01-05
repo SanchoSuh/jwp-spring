@@ -4,13 +4,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import next.dao.UserDao;
 import next.model.User;
 import core.mvc.AbstractController;
 import core.mvc.ModelAndView;
 
 public class LoginController extends AbstractController {
-	private UserDao userDao = UserDao.getInstance();
+	@Autowired
+	private UserDao userDao;
 	
     @Override
     public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws Exception {

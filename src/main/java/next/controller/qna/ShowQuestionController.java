@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import core.mvc.AbstractController;
 import core.mvc.ModelAndView;
 import next.dao.AnswerDao;
@@ -13,8 +15,10 @@ import next.model.Answer;
 import next.model.Question;
 
 public class ShowQuestionController extends AbstractController {
-	private QuestionDao questionDao = QuestionDao.getInstance();
-	private AnswerDao answerDao = AnswerDao.getInstance();
+	@Autowired
+	private QuestionDao questionDao;
+	@Autowired
+	private AnswerDao answerDao;
 	
 	@Override
 	public ModelAndView execute(HttpServletRequest req, HttpServletResponse response) throws Exception {
