@@ -6,15 +6,17 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 @Configuration
 @ComponentScan(
-	basePackages = { "next.service", "next.dao" },
+	basePackages = { "next" },
 	excludeFilters = @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION)
 )
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AppConfig {
 	private static final String DB_DRIVER = "org.h2.Driver";
 	private static final String DB_URL = "jdbc:h2:~/jwp-basic;AUTO_SERVER=TRUE";
